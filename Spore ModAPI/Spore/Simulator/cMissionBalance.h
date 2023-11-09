@@ -6,6 +6,8 @@ namespace Simulator
 	class cMissionBalance
 		: cMission
 	{
-
+	protected:
+		int mTargetNumFullRows;
+		int mBalanceMissionState;
 	};
 }

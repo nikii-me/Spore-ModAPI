@@ -6,6 +6,9 @@ namespace Simulator
 	class cMissionTradeRoute
 		: cMission
 	{
+	protected:
+		int SPG_TutorialTradeRoute;
+		int mTradeRouteState;
 
 	};
 }

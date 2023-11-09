@@ -6,6 +6,10 @@ namespace Simulator
 	class cMissionFindAliens
 		: cMission
 	{
-
+	protected:
+		int mContactGrob;
+		int mNumAliensFound;
+		int mNumAliensToFind;
+		int mFindAliensState;
 	};
 }

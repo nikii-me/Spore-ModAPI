@@ -9,8 +9,6 @@ namespace Simulator
 	public:
 
 	protected:
-		/* 4h */	int field_4;
-		/* 34h */	int field_34;
 		/* 1F0h */	int field_1F0;
 		/* 1F4h */	int field_1F4;
 		/* 1F8h */	int field_1F8;

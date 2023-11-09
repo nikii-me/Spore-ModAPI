@@ -6,6 +6,8 @@ namespace Simulator
 	class cMissionAdventure
 		: cMission
 	{
-
+	protected:
+		int mAdventureID;
+		int mAdventureState;
 	};
 }

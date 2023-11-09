@@ -6,6 +6,11 @@ namespace Simulator
 	class cMissionWar
 		: cMission
 	{
-
+	protected:
+		int SPG_WarEnteredPlanet;
+		int mInitialNumCities;
+		int mbTurretsOnly;
+		int mNumCitiesDestroyed;
+		int mWarMissionState;
 	};
 }

@@ -6,6 +6,7 @@ namespace Simulator
 	class cMissionScan
 		: cMission
 	{
-
+	protected:
+		int mScanMissionState;
 	};
 }

@@ -4,6 +4,7 @@ namespace Simulator
 {
 	class cRaidPlunderEvent
 	{
+	protected:
 
 	};
 }

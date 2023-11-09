@@ -6,6 +6,9 @@ namespace Simulator
 	class cMissionUseTool
 		: cMission
 	{
+	protected:
+		int mToolUsed;
+		int mUseToolMissionState;
 
 	};
 }
