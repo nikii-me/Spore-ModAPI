@@ -2130,76 +2130,7 @@
     <ClInclude Include="Spore\Simulator\SubSystem\SpaceTrading.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Spore\Simulator\cRaidPlunderEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cRaidEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cGenericPressureEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionAdventure.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionBalance.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionBiosphere.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Spore\Simulator\cMissionChangeArchetype.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionColonize.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionEradicate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionUseTool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionTradeRoute.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionTrade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionTrackBadge.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionTerraform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionStory201.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionScan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionMultiStep.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionMultiDelivery.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionExplore.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionFetch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionFindAliens.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionFlight101.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionMakeAlly.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spore\Simulator\cMissionWar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

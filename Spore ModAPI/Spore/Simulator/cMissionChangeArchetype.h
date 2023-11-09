@@ -7,20 +7,14 @@ namespace Simulator
 		: public cMission
 	{
 	public:
+		static const uint32_t TYPE = 0x462227e;
+		static const uint32_t NOUN_ID = 0x4622285;
 
-	protected:
-		/* 1F0h */	int field_1F0;
-		/* 1F4h */	int field_1F4;
-		/* 1F8h */	int field_1F8;
-		/* 1FCh */	int field_1FC;
-		/* 200h */	int field_200;
-		/* 204h */	int field_204;
-		/* 208h */	int field_208;
-
-		/* ???? */	int mChangeArchetypeTo;
-		/* ???? */	int mProgressSoFar;
-		/* ???? */	int mChangeArchetypeState;
-		/* ???? */	int mNumTotalActions;
-		/* ???? */	int mKeyHistory;
+		/* 1F0h */	int mChangeArchetypeState;
+		/* 1F4h */	Simulator::Archetypes mChangeArchetypeTo;
+		/* 1F8h */	uint32_t mNumTotalActions;
+		/* 1FCh */	int mProgressSoFar;
+		/* 200h */	eastl::vector<uint32_t> mKeyHistory;
 	};
+	ASSERT_SIZE(cMissionChangeArchetype, 0x218);
 }
