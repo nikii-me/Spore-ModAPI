@@ -6,6 +6,8 @@ namespace Simulator
 	class cMissionChangeArchetype
 		: public cMission
 	{
+	public:
+
 	protected:
 		/* 4h */	int field_4;
 		/* 34h */	int field_34;
@@ -17,5 +19,10 @@ namespace Simulator
 		/* 204h */	int field_204;
 		/* 208h */	int field_208;
 
+		/* ???? */	int mChangeArchetypeTo;
+		/* ???? */	int mProgressSoFar;
+		/* ???? */	int mChangeArchetypeState;
+		/* ???? */	int mNumTotalActions;
+		/* ???? */	int mKeyHistory;
 	};
 }
