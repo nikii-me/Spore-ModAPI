@@ -6,6 +6,9 @@ namespace Simulator
 	class cMissionStory201
 		: cMission
 	{
+	public:
+		static const uint32_t TYPE = 0x422227e;
+		static const uint32_t NOUN_ID = 0x4222285;
 	protected:
 		int SPG_Story201EnteredRuinPlanet;
 		int SPG_Story201EnteredUFOWreckPlanet;

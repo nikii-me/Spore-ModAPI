@@ -4,6 +4,10 @@ namespace Simulator
 {
 	class cRaidEvent
 	{
+	public:
+		static const uint32_t TYPE = 0x3960c0a;
+		static const uint32_t NOUN_ID = 0x3960c0e;
+	protected:
 		int mBomberIndex;
 		int mMaxHealth;
 		int mDamageRemainderUFO;

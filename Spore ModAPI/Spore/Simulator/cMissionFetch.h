@@ -6,6 +6,9 @@ namespace Simulator
 	class cMissionFetch
 		: cMission
 	{
+	public:
+		static const uint32_t TYPE = 0x2afd27e;
+		static const uint32_t NOUN_ID = 0x2afd284;
 	protected:
 		int mDropOffDistance;
 		int mDropOffRequired;

@@ -6,6 +6,9 @@ namespace Simulator
 	class cMissionTrade
 		: cMission
 	{
+	public:
+		static const uint32_t TYPE = 0x2aeefff;
+		static const uint32_t NOUN_ID = 0x2adedff;
 	protected:
 		int mSoldItem;
 		int mBoughtItem;
