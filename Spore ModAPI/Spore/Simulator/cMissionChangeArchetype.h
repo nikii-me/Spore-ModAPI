@@ -7,14 +7,14 @@ namespace Simulator
 {
 	/// This class inherits all its functions from cMission and other classes it extends.
 	/// See Spore/Simulator/cMission.h for relevant documentation.
-	class cMissionChangeArchetype
+	class cMissionChangeArchetype		//0146dcf8 in Ghidra (Steam version)
 		: public cMission
 	{
 	public:
 		static const uint32_t TYPE = 0x462227e;
 		static const uint32_t NOUN_ID = 0x4622285;	
 
-		//these three might be wrong
+		//these four might be wrong
 		/* 0h */	void func0h();
 		/* 4h */	void func4h();
 		/* 8h */	void func8h();				
