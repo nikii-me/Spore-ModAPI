@@ -24,8 +24,8 @@ namespace Simulator
 		/* B8h */	virtual void GetTitleText(eastl::string16& dst) override;
 		/* F8h */	virtual bool HasBeenFulfilled() override;
 		/* 144h */	virtual void AddMessageListeners() override;
-		/* 144h */	virtual void RemoveMessageListeners() override;
-		/* 15Ch */	virtual bool func15Ch() override;							//Checks if mColonizeMissionState != 2 and calls func6Ch()
+		/* 148h */	virtual void RemoveMessageListeners() override;
+		/* 15Ch */	virtual bool func15Ch() override;							//Checks if mChangeArchetypeState != 2, calls cMission::func6h(), checks the field again and assigns it value of 2
 		/* 174h */  virtual void func174h(int) override;						//References "SPG_ColonizeMissionSolar" and "SPG_ColonizeMissionPlanet"
 		/* 184h */	virtual float func184h(int, int) override;
 		/* 1A4h */	virtual cPlanetRecord* func1A4h(StarRequestFilter*);		//Might be responsible for finding the star system to colonize, specifically a red star system with red spice planets.

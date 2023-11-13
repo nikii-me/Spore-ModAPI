@@ -28,8 +28,8 @@ namespace Simulator
 		/* F8h */	virtual bool HasBeenFulfilled() override;
 		/* 118h */	virtual bool TranslateToken(uint32_t tokenID, eastl::string16& dst) override;
 		/* 144h */	virtual void AddMessageListeners() override;
-		/* 144h */	virtual void RemoveMessageListeners() override;
-		/* 15Ch */	virtual bool func15Ch() override;						//Checks if mChangeArchetypeState != 1 and calls func6Ch()
+		/* 148h */	virtual void RemoveMessageListeners() override;
+		/* 15Ch */	virtual bool func15Ch() override;						//Checks if mChangeArchetypeState != 1, calls cMission::func6h(), checks the field again and assigns it value of 1
 
 	public:
 		/* 1F0h */	int mChangeArchetypeState;

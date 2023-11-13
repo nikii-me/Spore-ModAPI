@@ -2136,6 +2136,9 @@
     <ClInclude Include="Spore\Simulator\cMissionColonize.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionEradicate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceCode\Allocator.cpp">
