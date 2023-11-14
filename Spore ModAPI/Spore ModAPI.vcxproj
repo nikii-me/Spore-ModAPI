@@ -419,6 +419,7 @@
     <ClInclude Include="Spore\Simulator\cMission.h" />
     <ClInclude Include="Spore\Simulator\cMissionColonize.h" />
     <ClInclude Include="Spore\Simulator\cMissionEradicate.h" />
+    <ClInclude Include="Spore\Simulator\cMissionExplore.h" />
     <ClInclude Include="Spore\Simulator\cNest.h" />
     <ClInclude Include="Spore\Simulator\cObjectInstanceInventoryItem.h" />
     <ClInclude Include="Spore\Simulator\cObjectPool.h" />
