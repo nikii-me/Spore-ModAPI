@@ -22,7 +22,12 @@ namespace Simulator
 		/* 78h */	virtual void Initialize() override;
 		/* 7Ch */	virtual MissionState Update(int deltaTime) override;
 		/* 88h */	virtual void OnMissionAccept() override;
+
+		/// WARNING: This function shares the same address with other cMission subclasses!
+		/// Use virtual_detour with this function to get an appropriate 'this' parameter.
+		/// You might also want to check from which class this function is called as well.
 		/* 94h */	virtual void OnMissionCompleted() override;
+
 		/* 9Ch */	virtual void FailMission() override;
 		/* B8h */	virtual void GetTitleText(eastl::string16& dst) override;
 		/* BCh */	virtual void GetUIMediumDescText(eastl::string16& dst) override;

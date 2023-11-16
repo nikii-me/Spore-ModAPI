@@ -23,30 +23,44 @@ namespace Simulator
 		/* 7Ch */	virtual MissionState Update(int deltaTime) override;
 		/* 84h */	virtual void ShutdownSystems() override;
 		/* 88h */	virtual void OnMissionAccept() override;
+
+		/// WARNING: This function shares the same address with other cMission subclasses!
+		/// Use virtual_detour with this function to get an appropriate 'this' parameter.
+		/// You might also want to check from which class this function is called as well.
 		/* 94h */	virtual void OnMissionCompleted() override;
+
 		/* B8h */	virtual void GetTitleText(eastl::string16& dst) override;
 		/* F8h */	virtual bool HasBeenFulfilled() override;
 		/* 118h */	virtual bool TranslateToken(uint32_t tokenID, eastl::string16& dst) override;
-		/* 120h */	virtual bool func120h() override;						//Returns mVisitCites
+		/* 120h */	virtual bool func120h() override;								//Returns mVisitCites
 		/* 124h */	virtual void func120h(int) override;
 		/* 144h */	virtual void AddMessageListeners() override;
 		/* 148h */	virtual void RemoveMessageListeners() override;
-		/* 15Ch */	virtual bool func15Ch() override;						//Checks if mExploreMissionState != 1, calls cMission::func6h(), checks the field again and assigns it value of 1
-		/* 178h */  virtual uint32_t func178h() override;					//Same thing as cMission::func178h(), but also checks for if mVisitCities != null
+
+		/// This function checks for mExploreMissionState's value.
+		/// If the value is different than 1, cMission::func6h() is called, then the check
+		/// is done again and the field is assigned a value of 1.
+		/* 15Ch */	virtual bool func15Ch() override;
+
+		/// Functionality-wise this function behaves the same as cMission::func178h(), but it
+		/// also includes a null check for mVisitCities.
+		/* 178h */  virtual uint32_t func178h() override;							//Same thing as cMission::func178h(), but also checks for if mVisitCities != null
 		/* 17Ch */	virtual uint32_t GetCreatureGoalCardLayoutId() override;
-		/* 180h */	virtual bool func180h() override;						//Checks if mVisitCities != null
+
+		/// Null check for mVisitCities
+		/* 180h */	virtual bool func180h() override;
 
 	public:
 		/* 1F0h */	int mExploreMissionState;
-		/* 1F4h */	uint8_t mVisitCities;
+		/* 1F4h */	uint8_t mVisitCities;				// A class pointer perhaps?
 		/* 1F8h */	int mVisitRadius;
 		/* 1FCh */	int mEffectHeight;
 		/* 200h */	int field_200;
 		/* 204h */	int mNumCitiesToVisit;
 		/* 208h */	int mNumVisitedCities;
-		/* 20Ch */	int mExploreType;				//Referenced in Write() function, not found in the constructor??
+		/* 20Ch */	int mExploreType;					// Referenced in Write() function, not found in the constructor??
 		/* 210h */	bool mCityVisitInfosInitialized;
-		/* 214h */	int mCityVisitInfos;			//Array of ints? Attribute has a custom Read and Write function
+		/* 214h */	int mCityVisitInfos;				// Array of ints? Attribute has a custom Read and Write function
 		/* 218h */	int field_218;
 		/* 21Ch */	int field_21C;
 	};

@@ -13,9 +13,7 @@ namespace Simulator
 	{
 	public:
 		static const uint32_t TYPE = 0x462227e;
-		static const uint32_t NOUN_ID = 0x4622285;	
-		
-//		/* Ch */	virtual void* Cast(uint32_t typeID);
+		static const uint32_t NOUN_ID = 0x4622285;
 
 		/* 10h */	virtual bool Write(ISerializerStream* stream) override;
 		/* 14h */	virtual bool Read(ISerializerStream* stream) override;
