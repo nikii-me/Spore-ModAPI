@@ -16,25 +16,29 @@ namespace Simulator
 		/* 1Ch */	virtual bool WriteToXML(XmlSerializer*) override;
 		/* 20h */	virtual uint32_t GetNounID() const override;
 		/* 38h */	virtual uint32_t GetCastID() const override;
-		/* 54h */	virtual int func54h();							//Returns mNumDiseasedKills
-		/* 58h */	virtual int func58h();							//Returns mTotalNumKillsNeeded
-		/* 5Ch */	virtual int func5Ch();							//Same as func58h()
+
+		/// Returns mNumDiseasedKills.
+		/* 54h */	virtual int func54h();
+
+		/// Returns mTotalNumKillsNeeded
+		/* 58h */	virtual int func58h();
+
+		/// Shares the address with func58h().
+		/* 5Ch */	virtual int func5Ch();
+
 		/* 78h */	virtual void Initialize() override;
 		/* 7Ch */	virtual MissionState Update(int deltaTime) override;
 		/* 88h */	virtual void OnMissionAccept() override;
-
-		/// WARNING: This function shares the same address with other cMission subclasses!
-		/// Use virtual_detour with this function to get an appropriate 'this' parameter.
-		/// You might also want to check from which class this function is called as well.
-		/* 94h */	virtual void OnMissionCompleted() override;
-
 		/* 9Ch */	virtual void FailMission() override;
 		/* B8h */	virtual void GetTitleText(eastl::string16& dst) override;
 		/* BCh */	virtual void GetUIMediumDescText(eastl::string16& dst) override;
 		/* C0h */	virtual void GetUILongDescText(eastl::string16& dst) override;
 		/* F8h */	virtual bool HasBeenFulfilled() override;
 		/* FCh */	virtual bool HasFailed() override;
-		/* 100h */	virtual bool func100h() override;					//Returns true on mEradicateMissionState == 3
+
+		/// Returns true if mEradicateMissionState has a value of 3.
+		/* 100h */	virtual bool func100h() override;
+
 		/* 118h */	virtual bool TranslateToken(uint32_t tokenID, eastl::string16& dst) override;
 		/* 11Ch */	virtual uint32_t GetCompletedEventLogID() override;
 		/* 124h */	virtual void func120h(int) override;

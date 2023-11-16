@@ -3,7 +3,7 @@
 
 namespace Simulator
 {
-	/// Represents the mission where the player must fill out a T-score row.
+	/// This class represents the mission where the player must fill out a T-score row.
 	/// More specifically, spaceevents~balance.prop is represented by this class.
 	class cMissionBalance
 		: public cMission

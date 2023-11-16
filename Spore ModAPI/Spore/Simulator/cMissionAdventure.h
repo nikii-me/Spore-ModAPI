@@ -3,7 +3,7 @@
 
 namespace Simulator
 {
-	/// Represents all missions related to playing adventures in space stage.
+	/// Represents all missions related to playing adventures in space stage. 
 	class cMissionAdventure
 		: public cMission
 	{
