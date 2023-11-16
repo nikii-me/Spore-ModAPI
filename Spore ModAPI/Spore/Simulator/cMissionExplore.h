@@ -3,7 +3,7 @@
 
 namespace Simulator
 {
-	/// Represents the first tutorial mission, which is skippable.
+	/// Apart of the flight101 missions. Represents the mission where you have to visit your homeworld's cities.
 	class cMissionExplore
 		: public cMission
 	{

@@ -3,10 +3,11 @@
 
 namespace Simulator
 {
-	class Unknown // Takes up space from offset to 0x218 to 0x238 minimum
+	/// Might be 20 bytes long
+	/*class Unknown
 	{
 
-	};
+	};*/
 
 	/// This class represents the eco disaster event that may randomly happen in space stage.
 	class cMissionBiosphere
@@ -60,7 +61,8 @@ namespace Simulator
 		/* 20Ch */	int mMaxNumHealthyKills;		// 5
 		/* 210h */	int mNumHealthyKills;			// Might be 8 bytes long?
 //		/* 214h */	int field_214;
-		/* 218h */	Unknown mCollapseTimer;			// Might be 20 bytes long?
+//		/* 218h */	Unknown mCollapseTimer;			
+		/* 218h */	int mCollapseTimer;				// Might be 20 bytes long?
 
 		// These might not actually exist
 //		/* 21Ch */	int field_21C;

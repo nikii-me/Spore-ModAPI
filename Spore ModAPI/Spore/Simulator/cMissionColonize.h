@@ -30,9 +30,10 @@ namespace Simulator
 		/* 144h */	virtual void AddMessageListeners() override;
 		/* 148h */	virtual void RemoveMessageListeners() override;
 
-		/// /// This function checks for mExploreMissionState's value.
+		/// This function checks for mExploreMissionState's value.
 		/// If the value is different than 2, cMission::func6h() is called, then the check
 		/// is done again and the field is assigned a value of 2.
+		/// WARNING: The address of this function is shared with cMissionFindAliens!
 		/* 15Ch */	virtual bool func15Ch() override;
 
 		/* 174h */  virtual void func174h(int) override;						// References "SPG_ColonizeMissionSolar" and "SPG_ColonizeMissionPlanet"
