@@ -3,7 +3,7 @@
 
 namespace Simulator
 {
-	class Unknown //Takes up space from offset to 0x218 to 0x234 minimum
+	class Unknown //Takes up space from offset to 0x218 to 0x238 minimum
 	{
 
 	};
@@ -20,13 +20,13 @@ namespace Simulator
 		/* 1Ch */	virtual bool WriteToXML(XmlSerializer*) override;
 		/* 20h */	virtual uint32_t GetNounID() const override;
 		/* 38h */	virtual uint32_t GetCastID() const override;
-		/* 54h */	virtual int func54h();				//Returns mNumDiseasedKills if mBiosphereMissionState == 0
-		/* 58h */	virtual int func58h();				//Same as func54h(), but returns mMaxNumDiseasedCreatures
-		/* 5Ch */	virtual int func5Ch();				//Same as func5Ch()
+		/* 54h */	virtual int func54h();									//Returns mNumDiseasedKills if mBiosphereMissionState == 0
+		/* 58h */	virtual int func58h();									//Same as func54h(), but returns mMaxNumDiseasedCreatures
+		/* 5Ch */	virtual int func5Ch();									//Shared address with func54h()
 		/* 78h */	virtual void Initialize() override;
 		/* 7Ch */	virtual MissionState Update(int deltaTime) override;
 		/* 88h */	virtual void OnMissionAccept() override;
-		/* 94h */	virtual void OnMissionCompleted() override;
+		/* 94h */	virtual void OnMissionCompleted() override;				//WARNING: Shares address with cMissionColonize::OnMissionCompleted() !
 		/* A8h */	virtual int GetDuration() override;
 		/* ACh */	virtual int GetRemainingTime() override;
 		/* B8h */	virtual void GetTitleText(eastl::string16& dst) override;
@@ -46,9 +46,9 @@ namespace Simulator
 		/* 204h */	int mMaxNumDiseasedCreatures;
 		/* 208h */	int mNumDiseasedKills;
 		/* 20Ch */	int mMaxNumHealthyKills;			//5
-		/* 210h */	int mNumHealthyKills;
+		/* 210h */	int mNumHealthyKills;				//Possibly 8 bytes long?
 //		/* 214h */	int field_214;
-		/* 218h */	Unknown mCollapseTimer;
+		/* 218h */	Unknown mCollapseTimer;				//20 bytes big(?)
 
 		//These might not actually exist
 //		/* 21Ch */	int field_21C;
