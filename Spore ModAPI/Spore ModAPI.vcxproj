@@ -295,6 +295,7 @@
     <ClInclude Include="SourceCode\DLL\stdafx.h" />
     <ClInclude Include="SourceCode\DLL\targetver.h" />
     <ClInclude Include="SourceCode\DLL\TextureOverride.h" />
+    <ClInclude Include="Spore\Simulator\cMissionAdventure.h" />
     <ClInclude Include="Spore\Simulator\cMissionBalance.h" />
     <ClInclude Include="Spore\Simulator\cMissionBiosphere.h" />
     <ClInclude Include="Spore\Simulator\cMissionChangeArchetype.h" />
