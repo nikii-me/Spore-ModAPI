@@ -1,14 +1,10 @@
 #pragma once
 #include <Spore\Simulator\cMission.h>
 
-#define cMissionPtr eastl::intrusive_ptr<Simulator::cMissionChangeArchetype>
-
 namespace Simulator 
 {
-	/// A cMission subclass that represents all archetype swap missions.
-	/// 
-	/// 
-	class cMissionChangeArchetype		//0146dcf8 in Ghidra (Steam version)
+	/// This class represents all of the archetype change missions in the game.
+	class cMissionChangeArchetype
 		: public cMission
 	{
 	public:
@@ -22,12 +18,24 @@ namespace Simulator
 		/* 38h */	virtual uint32_t GetCastID() const override;
 		/* 78h */	virtual void Initialize() override;
 		/* 94h */	virtual void OnMissionCompleted() override;
+
+		/// WARNING: This function shares the same address with other cMission subclasses!
+		/// Use virtual_detour with this function to get an appropriate 'this' parameter.
+		/// You might also want to check from which class this function is called as well.
 		/* B8h */	virtual void GetTitleText(eastl::string16& dst) override;
+
+		/// WARNING: This function shares the same address with other cMission subclasses!
+		/// Use virtual_detour with this function to get an appropriate 'this' parameter.
+		/// You might also want to check from which class this function is called as well.
 		/* F8h */	virtual bool HasBeenFulfilled() override;
+
 		/* 118h */	virtual bool TranslateToken(uint32_t tokenID, eastl::string16& dst) override;
 		/* 144h */	virtual void AddMessageListeners() override;
 		/* 148h */	virtual void RemoveMessageListeners() override;
-		/* 15Ch */	virtual bool func15Ch() override;						//Checks if mChangeArchetypeState != 1, calls cMission::func6h(), checks the field again and assigns it value of 1
+
+		/// This function checks if mChangeArchetypeState is different than 1 and calls cMission::func6h().
+		/// It then checks the field again and assigns it a value of 1.
+		/* 15Ch */	virtual bool func15Ch() override;
 
 	public:
 		/* 1F0h */	int mChangeArchetypeState;

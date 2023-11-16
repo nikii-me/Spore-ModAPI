@@ -4,8 +4,9 @@
 
 namespace Simulator
 {
+	/// Represents the tutorial mission where the player places their first colony.
 	class cMissionColonize
-		: cMission
+		: public cMission
 	{
 	public:
 		static const uint32_t TYPE = 0x2ba2a01;
@@ -18,14 +19,14 @@ namespace Simulator
 		/* 38h */	virtual uint32_t GetCastID() const override;
 		/* 78h */	virtual void Initialize() override;
 		/* 7Ch */	virtual MissionState Update(int deltaTime) override;
+		/* B8h */	virtual void GetTitleText(eastl::string16& dst) override;
 
 		/// WARNING: This function shares the same address with other cMission subclasses!
 		/// Use virtual_detour with this function to get an appropriate 'this' parameter.
 		/// You might also want to check from which class this function is called as well.
-		/* 94h */	virtual void OnMissionCompleted() override;
-
-		/* B8h */	virtual void GetTitleText(eastl::string16& dst) override;
+		/// The address is shared with cMissionFetch and cMissionFindAliens. 
 		/* F8h */	virtual bool HasBeenFulfilled() override;
+
 		/* 144h */	virtual void AddMessageListeners() override;
 		/* 148h */	virtual void RemoveMessageListeners() override;
 
@@ -33,15 +34,16 @@ namespace Simulator
 		/// If the value is different than 2, cMission::func6h() is called, then the check
 		/// is done again and the field is assigned a value of 2.
 		/* 15Ch */	virtual bool func15Ch() override;
+
 		/* 174h */  virtual void func174h(int) override;						// References "SPG_ColonizeMissionSolar" and "SPG_ColonizeMissionPlanet"
 		/* 184h */	virtual float func184h(int, int) override;
 
-		/// Finds a suitable star system for player's first colony.
+		/// Finds a suitable planet for player's first colony.
 		/* 1A4h */	virtual cPlanetRecord* func1A4h(StarRequestFilter* filter);
 	public:
 		/* 1F0h */	uint32_t mColonizeMissionState;
-		/* 1F4h */	uint8_t mNeedOneFullRow;
-		/* 1F5h */	uint8_t mBuildingsRequired;
+		/* 1F4h */	bool mNeedOneFullRow;
+		/* 1F5h */	bool mBuildingsRequired;
 	};
 	ASSERT_SIZE(cMissionColonize, 0x1F8);
 }

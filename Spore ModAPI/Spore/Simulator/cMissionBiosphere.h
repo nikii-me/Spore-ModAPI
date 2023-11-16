@@ -3,13 +3,14 @@
 
 namespace Simulator
 {
-	class Unknown //Takes up space from offset to 0x218 to 0x238 minimum
+	class Unknown // Takes up space from offset to 0x218 to 0x238 minimum
 	{
 
 	};
 
+	/// This class represents the eco disaster event that may randomly happen in space stage.
 	class cMissionBiosphere
-		: cMission
+		: public cMission
 	{
 	public:
 		static const uint32_t TYPE = 0x437443d;
@@ -20,17 +21,19 @@ namespace Simulator
 		/* 1Ch */	virtual bool WriteToXML(XmlSerializer*) override;
 		/* 20h */	virtual uint32_t GetNounID() const override;
 		/* 38h */	virtual uint32_t GetCastID() const override;
-		/* 54h */	virtual int func54h();									//Returns mNumDiseasedKills if mBiosphereMissionState == 0
-		/* 58h */	virtual int func58h();									//Same as func54h(), but returns mMaxNumDiseasedCreatures
-		/* 5Ch */	virtual int func5Ch();									//Shared address with func54h()
+
+		/// Returns mNumDiseasedKills if mBiosphereMissionState is equal to 0, otherwise returns 0 (null?).
+		/* 54h */	virtual int func54h();
+
+		/// Returns mMaxNumDiseasedCreatures if mBiosphereMissionState is equal to 0, otherwise returns 0 (null?).
+		/* 58h */	virtual int func58h();
+
+		/// Shares the address with func58h().
+		/* 5Ch */	virtual int func5Ch();
+
 		/* 78h */	virtual void Initialize() override;
 		/* 7Ch */	virtual MissionState Update(int deltaTime) override;
 		/* 88h */	virtual void OnMissionAccept() override;
-
-		/// WARNING: This function shares the same address with other cMission subclasses!
-		/// Use virtual_detour with this function to get an appropriate 'this' parameter.
-		/// You might also want to check from which class this function is called as well.
-		/* 94h */	virtual void OnMissionCompleted() override;
 
 		/* A8h */	virtual int GetDuration() override;
 		/* ACh */	virtual int GetRemainingTime() override;
@@ -40,22 +43,26 @@ namespace Simulator
 		/* 140h */	virtual bool func140h(int, int) override;
 		/* 144h */	virtual void AddMessageListeners() override;
 		/* 148h */	virtual void RemoveMessageListeners() override;
+
+		/// This function checks for mBiosphereMissionState's value.
+		/// If it's different from 2, it'll set it to 2, send a message to 0x38cf2fd and return early.
 		/* 15Ch */	virtual bool func15Ch() override;
+
 		/* 184h */	virtual float func184h(int, int) override;
 	public:
 		/* 1F0h */	int mBiosphereMissionState;
-		/* 1F4h */	int mInitialTerraformScore;			//1
+		/* 1F4h */	int mInitialTerraformScore;		// 1
 		/* 1F8h */	int mInitialNumPlants;
 		/* 1FCh */	int mInitialNumAnimals;
-		/* 200h */	int mCurrentBiosphereRow;			//1
+		/* 200h */	int mCurrentBiosphereRow;		// 1
 		/* 204h */	int mMaxNumDiseasedCreatures;
 		/* 208h */	int mNumDiseasedKills;
-		/* 20Ch */	int mMaxNumHealthyKills;			//5
-		/* 210h */	int mNumHealthyKills;				//Possibly 8 bytes long?
+		/* 20Ch */	int mMaxNumHealthyKills;		// 5
+		/* 210h */	int mNumHealthyKills;			// Might be 8 bytes long?
 //		/* 214h */	int field_214;
-		/* 218h */	Unknown mCollapseTimer;				//20 bytes big(?)
+		/* 218h */	Unknown mCollapseTimer;			// Might be 20 bytes long?
 
-		//These might not actually exist
+		// These might not actually exist
 //		/* 21Ch */	int field_21C;
 //		/* 220h */	int field_220;
 //		/* 224h */	int field_224;
@@ -65,10 +72,10 @@ namespace Simulator
 //		/* 234h */	int field_234;
 
 
-		//These three might not be fields
-		/* 238h */	int field_238;			//??
-		/* 23Ch */	int field_23C;			//??
-		/* 240h */	int field_240;			//??
+		// These three might not be fields
+		/* 238h */	int field_238;				// Double pointer
+		/* 23Ch */	int field_23C;				// Double pointer
+		/* 240h */	int field_240;				// Double pointer, might be 8 bytes long?
 
 //		/* 244h */	int field_244;
 		/* 248h */	int field_248;
