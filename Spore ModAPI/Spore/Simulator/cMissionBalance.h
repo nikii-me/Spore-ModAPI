@@ -19,13 +19,6 @@ namespace Simulator
 		/* 38h */	virtual uint32_t GetCastID() const override;
 		/* 78h */	virtual void Initialize() override;
 		/* 7Ch */	virtual MissionState Update(int deltaTime) override;
-
-		/// WARNING: This function shares the same address with other cMission subclasses!
-		/// Use virtual_detour with this function to get an appropriate 'this' parameter.
-		/// You might also want to check from which class this function is called as well.
-		/// The address is shared with cMissionChangeArchetype, cMissionExplore, ....
-		/* B8h */	virtual void GetTitleText(eastl::string16& dst) override;
-
 		/* F8h */	virtual bool HasBeenFulfilled() override;
 		/* 15Ch */	virtual bool func15Ch() override;
 		/* 184h */	virtual float func184h(int, int) override;

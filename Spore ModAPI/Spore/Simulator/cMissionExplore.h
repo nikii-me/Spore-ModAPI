@@ -35,12 +35,6 @@ namespace Simulator
 		/// WARNING: This function shares the same address with other cMission subclasses!
 		/// Use virtual_detour with this function to get an appropriate 'this' parameter.
 		/// You might also want to check from which class this function is called as well.
-		/// The address is shared with cMissionBalance, cMissionChangeArchetype, ....
-		/* B8h */	virtual void GetTitleText(eastl::string16& dst) override;
-
-		/// WARNING: This function shares the same address with other cMission subclasses!
-		/// Use virtual_detour with this function to get an appropriate 'this' parameter.
-		/// You might also want to check from which class this function is called as well.
 		/// The address is shared with cMissionChangeArchetype, ....
 		/* F8h */	virtual bool HasBeenFulfilled() override;
 
