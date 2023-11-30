@@ -22,6 +22,14 @@ namespace App
 
 		//TODO check sub_D38770, execute action?
 
+		/* 10h */	virtual bool Initialize(IGameModeManager* pManager) override;
+		/* 14h */	virtual bool Dispose() override;
+		/* 18h */	virtual bool OnEnter() override;
+		/* 1Ch */	virtual void OnExit() override;
+		/* 24h */	virtual bool OnKeyDown(int virtualKey, KeyModifiers modifiers) override;
+		/* 3Ch */	virtual void Update(float delta1, float delta2) override;
+		/* 40h */	virtual int func40h(int);
+
 	public:
 		/* 24h */	int field_24;
 		/* 28h */	Simulator::cGonzagoTimer field_28;
