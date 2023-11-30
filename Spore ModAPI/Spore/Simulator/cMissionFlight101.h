@@ -16,11 +16,12 @@ namespace Simulator
 		/* 1Ch */	virtual bool WriteToXML(XmlSerializer*) override;
 		/* 20h */	virtual uint32_t GetNounID() const override;
 		/* 38h */	virtual uint32_t GetCastID() const override;
-		/* 54h */	virtual void func54h();					// Mentions non-existent field offsets (0x1F0, 0x1F4, 0x204)
-		/* 58h */	virtual int func58h();					// Mentions non-existent field offsets (0x1F0, 0x1F4, 0x204)
-		/* 5Ch */	virtual int func5Ch();					// Mentions non-existent field offsets (0x1F0, 0x1F4, 0x204)
+		/* 54h */	virtual void func54h();
+		/* 58h */	virtual int func58h();
+		/* 5Ch */	virtual int func5Ch();
 		/* 74h */	virtual uint32_t GetCardWindowControlID() override;
 		/* 78h */	virtual void Initialize() override;
+		/* 7Ch */	virtual MissionState Update(int deltaTime) override;
 		/* 80h */	virtual void Load() override;
 		/* 84h */	virtual void ShutdownSystems() override;
 		/* 88h */	virtual void OnMissionAccept() override;
@@ -36,10 +37,10 @@ namespace Simulator
 		/* F4h */	virtual bool IsTargetPlanet(cPlanetRecord* pPlanetRecord) override;
 		/* F8h */	virtual bool HasBeenFulfilled() override;
 		/* 118h */	virtual bool TranslateToken(uint32_t tokenID, eastl::string16& dst) override;
-		/* 124h */	virtual void func120h(int) override;	// Mentions non-existent field offsets (0x1F0, 0x1F4, 0x204)
+		/* 124h */	virtual void func120h(int) override;
 		/* 144h */	virtual void AddMessageListeners() override;
 		/* 148h */	virtual void RemoveMessageListeners() override;
-		/* 15Ch */	virtual bool func15Ch() override;	// Mentions non-existent field offsets (0x1F0, 0x1F4, 0x204)
+		/* 15Ch */	virtual bool func15Ch() override;
 		/* 178h */  virtual uint32_t func178h() override;
 		/* 17Ch */	virtual uint32_t GetCreatureGoalCardLayoutId() override;
 		/* 180h */	virtual bool func180h() override;

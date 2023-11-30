@@ -2160,6 +2160,12 @@
     <ClInclude Include="Spore\Simulator\cMissionFlight101.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionMakeAlly.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionMultiDelivery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceCode\Allocator.cpp">

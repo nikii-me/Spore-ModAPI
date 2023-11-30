@@ -430,6 +430,8 @@
     <ClInclude Include="Spore\Simulator\cMissionFetch.h" />
     <ClInclude Include="Spore\Simulator\cMissionFindAliens.h" />
     <ClInclude Include="Spore\Simulator\cMissionFlight101.h" />
+    <ClInclude Include="Spore\Simulator\cMissionMakeAlly.h" />
+    <ClInclude Include="Spore\Simulator\cMissionMultiDelivery.h" />
     <ClInclude Include="Spore\Simulator\cNest.h" />
     <ClInclude Include="Spore\Simulator\cObjectInstanceInventoryItem.h" />
     <ClInclude Include="Spore\Simulator\cObjectPool.h" />

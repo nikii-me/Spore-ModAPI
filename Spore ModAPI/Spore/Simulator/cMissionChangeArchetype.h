@@ -30,6 +30,7 @@ namespace Simulator
 
 		/// This function checks if mChangeArchetypeState is different than 1 and calls cMission::func6h().
 		/// It then checks the field again and assigns it a value of 1.
+		/// WARNING: This function shares the address with cMissionMakeAlly!
 		/* 15Ch */	virtual bool func15Ch() override;
 
 	public:
