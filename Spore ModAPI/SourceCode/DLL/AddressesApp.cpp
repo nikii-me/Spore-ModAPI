@@ -450,6 +450,12 @@ namespace App
 	namespace Addresses(cCreatureModeStrategy)
 	{
 		DefineAddress(Get, SelectAddress(0xD2D640, 0xD38840));
+		DefineAddress(Initialize, SelectAddress(/*TODO*/0x0, 0xD47910));
+		DefineAddress(cCreatureModeStrategy_Dispose, SelectAddress(/*TODO*/0x0, 0xD3CCB0));
+		DefineAddress(OnEnter, SelectAddress(/*TODO*/0x0, 0xD3A7F0));
+		DefineAddress(OnExit, SelectAddress(/*TODO*/0x0, 0xD3C330));
+		DefineAddress(Update, SelectAddress(/*TODO*/0x0, 0xD45740));
+		DefineAddress(func40h, SelectAddress(/*TODO*/0x0, 0xD38850));
 	}
 
 	namespace Addresses(cCellModeStrategy)

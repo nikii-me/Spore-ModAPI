@@ -23,7 +23,7 @@ namespace App
 		//TODO check sub_D38770, execute action?
 
 		/* 10h */	virtual bool Initialize(IGameModeManager* pManager) override;
-		/* 14h */	virtual bool Dispose() override;
+		/* 14h */	virtual bool cCreatureModeStrategy_Dispose();
 		/* 18h */	virtual bool OnEnter() override;
 		/* 1Ch */	virtual void OnExit() override;
 		/* 24h */	virtual bool OnKeyDown(int virtualKey, KeyModifiers modifiers) override;
@@ -70,6 +70,12 @@ namespace App
 	namespace Addresses(cCreatureModeStrategy)
 	{
 		DeclareAddress(Get);  // 0xD2D640 0xD38840
+		DeclareAddress(Initialize);  //	0x0 0xD47910
+		DeclareAddress(cCreatureModeStrategy_Dispose);  // 0x0 0xD3CCB0
+		DeclareAddress(OnEnter);  // 0x0 0xD3A7F0
+		DeclareAddress(OnExit);  // 0x0 0xD3C330
+		DeclareAddress(Update);  // 0x0 0xD45740
+		DeclareAddress(func40h);  // 0x0 0xD38850
 	}
 
 #ifdef SDK_TO_GHIDRA
