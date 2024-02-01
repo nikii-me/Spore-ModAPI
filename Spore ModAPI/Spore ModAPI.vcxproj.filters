@@ -1146,9 +1146,6 @@
     <ClInclude Include="Spore\Simulator\cDefaultBeamProjectile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Spore\Simulator\cProjectile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Spore\Simulator\cSimulatorSpaceGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -1818,7 +1815,7 @@
     <ClInclude Include="Spore\Simulator\cResourceProjectile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Spore\Simulator\IProjectile.h">
+    <ClInclude Include="Spore\Simulator\cProjectile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Spore\Simulator\cCombatSimulator.h">
@@ -2164,6 +2161,60 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Spore\Simulator\cMissionMultiDelivery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cCommunityLayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cCulturalTarget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cTurret.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cDefaultToolProjectile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cDeepSpaceProjectile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cSpaceDefenseMissile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cArtilleryProjectile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cSpear.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cFlakProjectile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cCulturalProjectile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cICBM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Editors\VerbIconData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\SubSystem\GamePersistenceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cCollectableItems.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Palettes\PaletteIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMovableDestructibleOrnament.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cToolObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cPlanetaryArtifact.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

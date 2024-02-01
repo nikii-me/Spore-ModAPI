@@ -4,14 +4,20 @@
 #include <Spore\Simulator\cBadgeManager.h>
 #include <Spore\Simulator\cObjectPool.h>
 #include <Spore\Simulator\cSimulatorUniverse.h>
+#include <Spore\Simulator\cSpeciesProfile.h>
+#include <Spore\Simulator\cIdentityColorable.h>
+#include <Spore\Simulator\SubSystem\GamePersistenceManager.h>
+#include <Spore\Simulator\cDefaultToolProjectile.h>
+#include <Spore\Simulator\cArtilleryProjectile.h>
+#include <Spore\Simulator\cCulturalProjectile.h>
+#include <Spore\Simulator\cFlakProjectile.h>
+#include <Spore\Simulator\cResourceProjectile.h>
+#include <Spore\Simulator\cSpaceDefenseMissile.h>
+#include <Spore\Simulator\cCollectableItems.h>
+#include <Spore\Simulator\cPlanetaryArtifact.h>
 
 namespace Simulator
 {
-	auto_METHOD(cHerd, cHerd*, Create,
-		Args(const Vector3& position, cSpeciesProfile* pSpeciesProfile, int herdSize,
-			bool isOwnedByAvatar, int creaturePersonality, bool createNest),
-		Args(position, pSpeciesProfile, herdSize, isOwnedByAvatar, creaturePersonality, createNest));
-
 	void cHerd::SetEnabled(bool enabled)
 	{
 		mbEnabled = enabled;
@@ -69,5 +75,86 @@ namespace Simulator
 	{
 		return *(cSimulatorUniverse**)GetAddress(cSimulatorUniverse, _ptr);
 	}
+
+	//// GamePersistenceManager ////
+
+	auto_STATIC_METHOD_(cGamePersistenceManager, cGamePersistenceManager*, Get);
+
+
+	//// cSpeciesProfile ////
+
+	auto_METHOD_VOID(cSpeciesProfile, GetSpeciesName, Args(eastl::string16& dst), Args(dst));
+
+
+	//// cIdentityColorable ////
+
+	auto_METHOD_VOID(cIdentityColorable, AssignNames, Args(const eastl::string16& speciesName), Args(speciesName));
+
+	//// cDefaultToolProjectile ////
+
+	auto_STATIC_METHOD_VOID(Simulator, LaunchDefaultToolProjectile,
+		Args(cSpaceToolData* tool, cDefaultToolProjectile* projectile, const Math::Vector3& origin, const Math::Vector3& target),
+		Args(tool, projectile, origin, target));
+
+
+	//// cArtilleryProjectile ////
+
+	auto_METHOD_VOID(cArtilleryProjectile, LaunchProjectile, Args(const Math::Vector3& target), Args(target));
+
+
+	//// cCulturalProjectile ////
+
+	auto_METHOD_VOID(cCulturalProjectile, LaunchProjectile, 
+		Args(cGameData* owner, cVehicle* vehicle, cSpaceToolData* tool, cCombatant* target, const Math::Vector3& unk0, float unk1, bool unk2, bool spin),
+		Args(owner, vehicle, tool, target, unk0, unk1, unk2, spin));
+
+
+	//// cFlakProjectile ////
+
+	auto_METHOD_VOID(cFlakProjectile, LaunchProjectile, Args(const Math::Vector3& target, float arg), Args(target, arg));
+
+
+	//// cResourceProjectile ////
+
+	auto_METHOD_VOID(cResourceProjectile, LaunchProjectile,
+		Args(cCivilization* civilization, cCommodityNode* commodityNode, const Math::Vector3& arg0, float speed, bool arg1),
+		Args(civilization, commodityNode, arg0, speed, arg1));
+
+	//// cSpaceDefenseMissile ////
+
+	auto_METHOD_VOID(cSpaceDefenseMissile, LaunchProjectile, Args(const Math::Vector3& target, cCombatant* arg), Args(target, arg));
+
+
+	//// cCollectableItems ////
+
+	auto_METHOD_VOID(cCollectableItems, LoadConfig, 
+		Args(uint32_t configGroupID, uint32_t configInstanceID, uint32_t itemsGroupID),
+		Args(configGroupID, configInstanceID, itemsGroupID));
+
+	auto_METHOD_VOID(cCollectableItems, AddUnlockableItem,
+		Args(uint32_t instanceID, uint32_t groupID, int itemUnlockLevel, uint32_t categoryID, int row, int column, int pageIndex, float itemUnlockFindPercentage, uint32_t itemUnlockEffect),
+		Args(instanceID, groupID, itemUnlockLevel, categoryID, row, column, pageIndex, itemUnlockFindPercentage, itemUnlockEffect));
+
+	auto_METHOD(cCollectableItems, bool, AddUnlockableItemFromProp,
+		Args(struct ResourceKey key, uint32_t categoryID, int row, int column, int pageIndex),
+		Args(key, categoryID, row, column, pageIndex));
+
+	auto_METHOD_VOID(cCollectableItems, sub_597390,
+		Args(eastl::vector<int>& dst, struct cCollectableItemID itemID, int unk),
+		Args(dst, itemID, unk));
+
+
+	eastl::fixed_vector<eastl::pair<uint32_t, int>, 16>& GetCreatureGameUnlockCategoriesCount() {
+		return *(eastl::fixed_vector<eastl::pair<uint32_t, int>, 16>*)(GetAddress(Simulator, sCreatureGameUnlockCategoriesCount));
+	}
+
+
+	//// cPlanetaryArtifact ////
+
+	auto_METHOD_VOID_(cPlanetaryArtifact, SetLocomotion);
+
+	auto_METHOD_VOID(cPlanetaryArtifact, LoadFromItem, 
+		Args(SpaceInventoryItemType itemType, const ResourceKey& itemKey, int count, bool arg),
+		Args(itemType, itemKey, count, arg));
 }
 #endif

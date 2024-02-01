@@ -27,6 +27,7 @@
 #include <Spore\Simulator\cCreatureAnimal.h>
 #include <Spore\Simulator\cTribe.h>
 #include <Spore\Simulator\cHerd.h>
+#include <Spore\Simulator\cPlayer.h>
 #include <Spore\App\IMessageListener.h>
 #include <EASTL\hash_map.h>
 #include <EASTL\map.h>
@@ -69,6 +70,9 @@ namespace Simulator
 		, public cStrategy
 	{
 	public:
+		/// Returns the active Simulator game noun manager.
+		static cGameNounManager* Get();
+
 #ifndef SDK_TO_GHIDRA
 		/// Creates an instance of a simulator object of the given type. The noun ID is one of
 		/// the values in the Simulator::GameNounIDs enum.
@@ -82,6 +86,11 @@ namespace Simulator
 		void DestroyInstance(cGameData* pInstance);
 
 		void UpdateModels();
+
+		cPlayer* GetPlayer();
+
+		/// If there is no cPlayer instance created, it creates one.
+		void EnsurePlayer();
 
 
 #ifndef SDK_TO_GHIDRA
@@ -110,8 +119,12 @@ namespace Simulator
 
 		cTribe* GetPlayerTribe();
 
-		/// Returns the active Simulator game noun manager.
-		static cGameNounManager* Get();
+		cCivilization* GetPlayerCivilization();
+
+		cHerd* CreateHerd(const Vector3& position, cSpeciesProfile* pSpeciesProfile, int herdSize,
+			bool isOwnedByAvatar, int creaturePersonality, bool createNest);
+
+		cNest* CreateNest(const Vector3& position, cHerd* herd);
 			
 	public:
 		/* 20h */	eastl::hash_map<int, int> field_20;
@@ -124,7 +137,7 @@ namespace Simulator
 		/* 58h */	cHerdPtr mpAvatarHerd;
 		/* 5Ch */	eastl::vector<cCreatureAnimalPtr> mPosseMembers;
 		/* 70h */	cTribePtr mpPlayerTribe;
-		/* 74h */	ObjectPtr mpPlayer;  // cPlayer
+		/* 74h */	cPlayerPtr mpPlayer;
 		/* 78h */	eastl::intrusive_list<cGameData> mNouns;
 		/* 80h */	eastl::vector<ObjectPtr> field_80;  // objects that haven't been updated since last call to UpdateModels?
 		/* 94h */	int field_94;
@@ -151,6 +164,11 @@ namespace Simulator
 
 		DeclareAddress(UpdateModels);
 		DeclareAddress(SetAvatar);
+
+		DeclareAddress(GetPlayerCivilization);  // 0xB25E30 0xB25F90
+		DeclareAddress(CreateHerd);
+		DeclareAddress(CreateNest);  // 0xB20C70 0xB20DD0
+		DeclareAddress(EnsurePlayer);  // 0xB20DE0 0xB20F40	
 	}
 
 #ifndef SDK_TO_GHIDRA
@@ -211,4 +229,11 @@ template <class T>
 inline T* simulator_new()
 {
 	return object_cast<T>(GameNounManager.CreateInstance(T::NOUN_ID));
+}
+
+namespace Simulator
+{
+	inline cPlayer* GetPlayer() {
+		return GameNounManager.GetPlayer();
+	}
 }

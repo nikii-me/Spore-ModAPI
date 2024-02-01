@@ -26,6 +26,7 @@
 #include <Spore\Simulator\SubSystem\GameNounManager.h>
 #include <Spore\Simulator\SubSystem\GameViewManager.h>
 #include <Spore\Simulator\SubSystem\GameTimeManager.h>
+#include <Spore\Simulator\SubSystem\GamePersistenceManager.h>
 #include <Spore\Simulator\SubSystem\StarManager.h>
 #include <Spore\Simulator\SubSystem\ToolManager.h>
 #include <Spore\Simulator\SubSystem\SpacePlayerData.h>
@@ -67,7 +68,19 @@
 #include <Spore\Simulator\cSolarSystem.h>
 #include <Spore\Simulator\cScenarioEditHistory.h>
 #include <Spore\Simulator\SpaceConstants.h>
-#include <Spore\App\ScenarioMode.h>
+#include <Spore\Simulator\cDefaultToolProjectile.h>
+#include <Spore\Simulator\cDeepSpaceProjectile.h>
+#include <Spore\Simulator\cSpaceDefenseMissile.h>
+#include <Spore\Simulator\cArtilleryProjectile.h>
+#include <Spore\Simulator\cFlakProjectile.h>
+#include <Spore\Simulator\cCulturalProjectile.h>
+#include <Spore\Simulator\cICBM.h>
+#include <Spore\Simulator\cDefaultAoEArea.h>
+#include <Spore\Simulator\cSpear.h>
+#include <Spore\Simulator\cCollectableItems.h>
+#include <Spore\Simulator\cMovableDestructibleOrnament.h>
+#include <Spore\Simulator\cToolObject.h>
+#include <Spore\Simulator\cPlanetaryArtifact.h>
 
 #include <Spore\Simulator\SimulatorMessages.h>
 
@@ -79,3 +92,7 @@
 #include <Spore\Simulator\Serialization.h>
 #include <Spore\Simulator\SerializationTypes.h>
 #include <Spore\Simulator\NounClassFactories.h>
+
+#include <Spore\App\ScenarioMode.h>
+#include <Spore\App\cCreatureModeStrategy.h>
+#include <Spore\App\cCellModeStrategy.h>

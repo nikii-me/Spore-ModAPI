@@ -23,6 +23,7 @@
 #include <Spore\Simulator\Cell\cCellUI.h>
 #include <Spore\Simulator\Cell\CellFunctions.h>
 #include <Spore\Simulator\cCreatureGameData.h>
+#include <Spore\Simulator\cCommunityLayout.h>
 #include <Spore\Simulator\cEmpire.h>
 #include <Spore\Simulator\cEnergyRepairToolStrategy.h>
 #include <Spore\Simulator\cGameDataUFO.h>
@@ -56,6 +57,7 @@
 #include <Spore\Simulator\cScenarioPowerup.h>
 #include <Spore\Simulator\cScenarioSimulator.h>
 #include <Spore\Simulator\cScenarioTerraformMode.h>
+#include <Spore\Simulator\cCultureSet.h>
 #include <Spore\Simulator\SubSystem\SpaceGfx.h>
 #include <Spore\Simulator\cHerd.h>
 #include <Spore\Simulator\cToolStrategy.h>
@@ -68,8 +70,18 @@
 #include <Spore\Simulator\cStar.h>
 #include <Spore\Simulator\cMissionManager.h>
 #include <Spore\Simulator\cSimulatorUniverse.h>
+#include <Spore\Simulator\cIdentityColorable.h>
+#include <Spore\Simulator\cSpeciesProfile.h>
 #include <Spore\Simulator\Serialization.h>
 #include <Spore\Simulator\SpaceConstants.h>
+#include <Spore\Simulator\cArtilleryProjectile.h>
+#include <Spore\Simulator\cCulturalProjectile.h>
+#include <Spore\Simulator\cFlakProjectile.h>
+#include <Spore\Simulator\cResourceProjectile.h>
+#include <Spore\Simulator\cCollectableItems.h>
+#include <Spore\Simulator\cSpaceDefenseMissile.h>
+#include <Spore\Simulator\cDefaultToolProjectile.h>
+#include <Spore\Simulator\cPlanetaryArtifact.h>
 #include <Spore\Simulator\SubSystem\cRelationshipManager.h>
 #include <Spore\Simulator\SubSystem\GameBehaviorManager.h>
 #include <Spore\Simulator\SubSystem\GameInputManager.h>
@@ -88,6 +100,7 @@
 #include <Spore\Simulator\SubSystem\UIEventLog.h>
 #include <Spore\Simulator\SubSystem\AnimalSpeciesManager.h>
 #include <Spore\Simulator\SubSystem\PlantSpeciesManager.h>
+#include <Spore\Simulator\SubSystem\GamePersistenceManager.h>
 #include <Spore\Simulator\NounClassFactories.h>
 
 namespace Addresses(Simulator)
@@ -118,6 +131,10 @@ namespace Addresses(Simulator)
 	DefineAddress(GetPlanetTemperatureType, SelectAddress(0xFC26B0, 0xFC1F90));
 	DefineAddress(IsBinaryStar, SelectAddress(0xC8A770, 0xC8B5E0));
 	DefineAddress(IsNotStarOrBinaryStar, SelectAddress(0xC8A840, 0xC8B6B0));
+
+	DefineAddress(LaunchDefaultToolProjectile, SelectAddress(0x1054F40, 0x1054390));
+
+	DefineAddress(sCreatureGameUnlockCategoriesCount, SelectAddress(0x1587278, 0x1583298));
 	
 #ifndef SDK_TO_GHIDRA
 	DefineAddress(LightingWorld_ptr, SelectAddress(0x1682CD4, 0x167EA54));
@@ -148,6 +165,9 @@ namespace Simulator
 	{
 		DefineAddress(IsAboveCity, SelectAddress(0xBD90C0, 0xBD9D50));
 		DefineAddress(SpawnVehicle, SelectAddress(0xBDD410, 0xBDDEF0));
+		DefineAddress(ProcessBuildingUpdate, SelectAddress(0xBE1C10, 0xBE2590));
+		DefineAddress(AddBuilding, SelectAddress(0xBE16C0, 0xBE2040));
+		DefineAddress(RemoveBuilding, SelectAddress(0xBE2B20, 0xBE34A0));
 	}
 
 	namespace Addresses(cCreatureAbility)
@@ -483,6 +503,11 @@ namespace Simulator
 
 		DefineAddress(UpdateModels, SelectAddress(0xB227E0, 0xB228F0));
 		DefineAddress(SetAvatar, SelectAddress(0xB1FB90, 0xB1FCA0));
+
+		DefineAddress(GetPlayerCivilization, SelectAddress(0xB25E30, 0xB25F90));
+		DefineAddress(CreateHerd, SelectAddress(0xB237C0, 0xB23920));
+		DefineAddress(CreateNest, SelectAddress(0xB20C70, 0xB20DD0));
+		DefineAddress(EnsurePlayer, SelectAddress(0xB20DE0, 0xB20F40));
 	}
 
 	namespace Addresses(cGameViewManager)
@@ -947,6 +972,80 @@ namespace Simulator
 		DefineAddress(SetRareAsFound, SelectAddress(0x1040820, 0x103FBB0));
 		DefineAddress(GenerateNPCStore, SelectAddress(0x103F560, 0x103E8F0));
 	}
+
+	namespace Addresses(cGamePersistenceManager) 
+	{
+		DefineAddress(Get, SelectAddress(0xB3D2A0, 0xB3D440));
+	}
+	
+	namespace Addresses(cIdentityColorable)
+	{
+		DefineAddress(AssignNames, SelectAddress(0xB6F040, 0xB6F480));
+	}
+
+	namespace Addresses(cSpeciesProfile)
+	{
+		DefineAddress(GetSpeciesName, SelectAddress(0x4DA1C0, 0x4DA390));
+	}
+
+ 	namespace Addresses(cCultureSet) 
+	{
+		DefineAddress(PickCreation, SelectAddress(0xBF8DF0, 0xBF9840));
+	}
+
+	namespace Addresses(cCommunityLayout)
+	{
+		DefineAddress(InitializeSlots, SelectAddress(0xAFE620, 0xAFEB80));
+		DefineAddress(SnapSlotsToPlanet, SelectAddress(0xAFA690, 0xAFAE40));
+		DefineAddress(SetParameters, SelectAddress(0xAF95D0, 0xAF9C70));
+	}
+
+	namespace Addresses(cLayoutSlot)
+	{
+		DefineAddress(SetObject, SelectAddress(0xAF9890, 0xAF9FB0));
+		DefineAddress(RemoveObject, SelectAddress(0xAF9900, 0xAFA020));
+	}
+
+	namespace Addresses(cArtilleryProjectile)
+	{
+		DefineAddress(LaunchProjectile, SelectAddress(0xCB68C0, 0xCB71C0));
+	}
+	namespace Addresses(cCulturalProjectile)
+	{
+		DefineAddress(LaunchProjectile, SelectAddress(0xCBD0A0, 0xCBDB90));
+	}
+	namespace Addresses(cFlakProjectile)
+	{
+		DefineAddress(LaunchProjectile, SelectAddress(0xCB7400, 0xCB7CF0));
+	}
+	namespace Addresses(cResourceProjectile)
+	{
+		DefineAddress(LaunchProjectile, SelectAddress(0xCBDCD0, 0xCBE7C0));
+	}
+	namespace Addresses(cSpaceDefenseMissile)
+	{
+		DefineAddress(LaunchProjectile, SelectAddress(0xCB7FD0, 0xCB88B0));
+	}
+
+	namespace Addresses(cCollectableItems)
+	{
+		DefineAddress(LoadConfig, SelectAddress(0x599100, 0x599440));
+		DefineAddress(AddUnlockableItem, SelectAddress(0x598A70, 0x598DB0));
+		DefineAddress(AddUnlockableItemFromProp, SelectAddress(0x598B50, 0x598E90));
+		DefineAddress(sub_597BC0, SelectAddress(0x597BC0, 0x597F00));
+		DefineAddress(sub_597390, SelectAddress(0x597390, 0x5976D0));
+	}
+
+	namespace Addresses(CreatureGamePartUnlocking)
+	{
+		DefineAddress(sub_D3B460, SelectAddress(0xD3B460, 0xD3BF50));
+	}
+
+	namespace Addresses(cPlanetaryArtifact)
+	{
+		DefineAddress(SetLocomotion, SelectAddress(0xC687D0, 0xC69230));
+		DefineAddress(LoadFromItem, SelectAddress(0xC73F90, 0xC74ED0));
+	}
 }
 
 #ifdef SDK_TO_GHIDRA
@@ -955,7 +1054,7 @@ namespace Addresses(Simulator)
 	DefineAddress(sSpacePlayerData, SelectAddress(0x16E1D0C, 0x16DDA8C));
 	DefineAddress(sScenarioEditHistory, SelectAddress(0x160A850, 0x16065D8));
 	DefineAddress(TimeAtStartOfFrame, SelectAddress(0xB63580, 0xB63980));
-	DefineAddress(cCreatureGameData, SelectAddress(0x16A25F0, 0x169E370));
+	DefineAddress(sCreatureGameData, SelectAddress(0x16A25F0, 0x169E370));
 }
 #endif
 

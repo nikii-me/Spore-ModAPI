@@ -37,6 +37,8 @@
 #include <Spore\Editors\Editor.h>
 #include <Spore\Editors\EditorRequest.h>
 #include <Spore\Editors\EditorMessages.h>
+#include <Spore\Editors\VerbIconData.h>
+#include <Spore\Palettes\PaletteIterator.h>
 
 #include <Spore\App\IClassManager.h>
 #include <Spore\App\FileDrop.h>

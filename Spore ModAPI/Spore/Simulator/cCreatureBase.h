@@ -33,6 +33,7 @@
 #include <EASTL\vector.h>
 #include <EASTL\list.h>
 #include <EASTL\hash_map.h>
+#include <EASTL\fixed_hash_map.h>
 #include <EASTL\bitset.h>
 #include <EASTL\queue.h>
 
@@ -40,11 +41,10 @@
 
 namespace Simulator
 {
-	class CreatureEffectPool
-	{
-		/* 00h */	eastl::hash_map<uint32_t, IVisualEffectPtr> mEffectMap;
-		/* 20h */	char field_0[0x80];
-	};
+	typedef eastl::sp_fixed_hash_map<uint32_t, IVisualEffectPtr, 4> CreatureEffectPool;
+	ASSERT_SIZE(CreatureEffectPool, 0xA0);
+
+	static_assert(sizeof(eastl::pair<uint32_t, IVisualEffectPtr>) + 4 == 0xC, "Incorrect size");
 
 	// Maybe used in other places as well?
 	class cAbilityState  // size 10h
@@ -200,6 +200,7 @@ namespace Simulator
 		/* 6Ch */	virtual void func6Ch(int deltaTime);  // called by Update
 		/* 70h */	virtual void func70h(float deltaTimeSeconds);  // called by Update
 		/* 74h */	virtual void func74h(void*);  // related to babies growing up
+		/* 78h */	virtual void func78h();
 		/* 7Ch */	virtual float GetBaseMaxHitPoints() = 0;
 		/* 80h */	virtual float CalculateScale(bool isBaby);
 		/* 84h */	virtual void SetCreatureTarget(cCombatant* pTarget, bool, int intentionTowardsTarget);  //TODO check loc_D3242E
