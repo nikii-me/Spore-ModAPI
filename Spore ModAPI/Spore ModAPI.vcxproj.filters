@@ -2127,6 +2127,42 @@
     <ClInclude Include="Spore\Simulator\SubSystem\SpaceTrading.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionChangeArchetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionColonize.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionEradicate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionExplore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionBiosphere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionBalance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionAdventure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionFetch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionFindAliens.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionFlight101.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionMakeAlly.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spore\Simulator\cMissionMultiDelivery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Spore\Simulator\cCommunityLayout.h">
       <Filter>Header Files</Filter>
     </ClInclude>

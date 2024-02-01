@@ -299,6 +299,10 @@
     <ClInclude Include="SourceCode\DLL\stdafx.h" />
     <ClInclude Include="SourceCode\DLL\targetver.h" />
     <ClInclude Include="SourceCode\DLL\TextureOverride.h" />
+    <ClInclude Include="Spore\Simulator\cMissionAdventure.h" />
+    <ClInclude Include="Spore\Simulator\cMissionBalance.h" />
+    <ClInclude Include="Spore\Simulator\cMissionBiosphere.h" />
+    <ClInclude Include="Spore\Simulator\cMissionChangeArchetype.h" />
     <ClInclude Include="Spore\Anim\anim_cid.h" />
     <ClInclude Include="Spore\Anim\anim_csd.h" />
     <ClInclude Include="Spore\Anim\SPAnimation.h" />
@@ -431,6 +435,14 @@
     <ClInclude Include="Spore\Simulator\cICBM.h" />
     <ClInclude Include="Spore\Simulator\cInterCityRoad.h" />
     <ClInclude Include="Spore\Simulator\cMission.h" />
+    <ClInclude Include="Spore\Simulator\cMissionColonize.h" />
+    <ClInclude Include="Spore\Simulator\cMissionEradicate.h" />
+    <ClInclude Include="Spore\Simulator\cMissionExplore.h" />
+    <ClInclude Include="Spore\Simulator\cMissionFetch.h" />
+    <ClInclude Include="Spore\Simulator\cMissionFindAliens.h" />
+    <ClInclude Include="Spore\Simulator\cMissionFlight101.h" />
+    <ClInclude Include="Spore\Simulator\cMissionMakeAlly.h" />
+    <ClInclude Include="Spore\Simulator\cMissionMultiDelivery.h" />
     <ClInclude Include="Spore\Simulator\cMovableDestructibleOrnament.h" />
     <ClInclude Include="Spore\Simulator\cNest.h" />
     <ClInclude Include="Spore\Simulator\cObjectInstanceInventoryItem.h" />
